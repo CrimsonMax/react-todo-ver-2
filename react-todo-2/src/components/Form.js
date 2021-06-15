@@ -7,15 +7,17 @@ const Form = ({ setInputText, todos, setTodos, inputText, setStatus }) => {
     };
     const submitTodoHandler = (e) => {
         e.preventDefault();
-        setTodos([
-            ...todos, {
-                text: inputText,
-                completed: false,
-                class: true,
-                id: Math.random() * 1000 // <------- Just for example!
-            }
-        ]);
-
+         let trimmedInput = inputText.trim()
+        if (trimmedInput !== '') {
+            setTodos([
+                ...todos, {
+                    text: inputText,
+                    completed: false,
+                    class: true,
+                    id: Math.random() * 1000 // <------- Just for example!
+                }
+            ]);
+        }
         setInputText('');
     };
     const statusHandler = (e) => {
